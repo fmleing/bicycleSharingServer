@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bicyclesharing.bicycle.dao.BicycleMapper" >
+  <resultMap id="BaseResultMap" type="com.bicyclesharing.bicycle.entity.Bicycle" >
+    <id column="bicycle_id" property="bicycleId" jdbcType="INTEGER" />
+    <result column="bicycle_current_x" property="bicycleCurrentX" jdbcType="DOUBLE" />
+    <result column="bicycle_current_y" property="bicycleCurrentY" jdbcType="DOUBLE" />
+    <result column="bicycle_last_time" property="bicycleLastTime" jdbcType="TIMESTAMP" />
+    <result column="bicycle_statement" property="bicycleStatement" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bicycle_id, bicycle_current_x, bicycle_current_y, bicycle_last_time, bicycle_statement
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bicycle
+    where bicycle_id = #{bicycleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bicycle
+    where bicycle_id = #{bicycleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bicyclesharing.bicycle.entity.Bicycle" >
+    insert into bicycle (bicycle_id, bicycle_current_x, bicycle_current_y, 
+      bicycle_last_time, bicycle_statement)
+    values (#{bicycleId,jdbcType=INTEGER}, #{bicycleCurrentX,jdbcType=DOUBLE}, #{bicycleCurrentY,jdbcType=DOUBLE}, 
+      #{bicycleLastTime,jdbcType=TIMESTAMP}, #{bicycleStatement,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bicyclesharing.bicycle.entity.Bicycle" >
+    insert into bicycle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bicycleId != null" >
+        bicycle_id,
+      </if>
+      <if test="bicycleCurrentX != null" >
+        bicycle_current_x,
+      </if>
+      <if test="bicycleCurrentY != null" >
+        bicycle_current_y,
+      </if>
+      <if test="bicycleLastTime != null" >
+        bicycle_last_time,
+      </if>
+      <if test="bicycleStatement != null" >
+        bicycle_statement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bicycleId != null" >
+        #{bicycleId,jdbcType=INTEGER},
+      </if>
+      <if test="bicycleCurrentX != null" >
+        #{bicycleCurrentX,jdbcType=DOUBLE},
+      </if>
+      <if test="bicycleCurrentY != null" >
+        #{bicycleCurrentY,jdbcType=DOUBLE},
+      </if>
+      <if test="bicycleLastTime != null" >
+        #{bicycleLastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bicycleStatement != null" >
+        #{bicycleStatement,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.bicycle.entity.Bicycle" >
+    update bicycle
+    <set >
+      <if test="bicycleCurrentX != null" >
+        bicycle_current_x = #{bicycleCurrentX,jdbcType=DOUBLE},
+      </if>
+      <if test="bicycleCurrentY != null" >
+        bicycle_current_y = #{bicycleCurrentY,jdbcType=DOUBLE},
+      </if>
+      <if test="bicycleLastTime != null" >
+        bicycle_last_time = #{bicycleLastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bicycleStatement != null" >
+        bicycle_statement = #{bicycleStatement,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bicycle_id = #{bicycleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.bicycle.entity.Bicycle" >
+    update bicycle
+    set bicycle_current_x = #{bicycleCurrentX,jdbcType=DOUBLE},
+      bicycle_current_y = #{bicycleCurrentY,jdbcType=DOUBLE},
+      bicycle_last_time = #{bicycleLastTime,jdbcType=TIMESTAMP},
+      bicycle_statement = #{bicycleStatement,jdbcType=INTEGER}
+    where bicycle_id = #{bicycleId,jdbcType=INTEGER}
+  </update>
+</mapper>
