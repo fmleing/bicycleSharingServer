@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bicyclesharing.adminmessage.dao.AdminMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.bicyclesharing.adminmessage.entity.AdminMessage" >
+    <id column="admin_message_id" property="adminMessageId" jdbcType="INTEGER" />
+    <result column="admin_message_title" property="adminMessageTitle" jdbcType="VARCHAR" />
+    <result column="admin_message_time" property="adminMessageTime" jdbcType="TIMESTAMP" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bicyclesharing.adminmessage.entity.AdminMessage" extends="BaseResultMap" >
+    <result column="admin_message_content" property="adminMessageContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    admin_message_id, admin_message_title, admin_message_time, admin_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    admin_message_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from admin_message
+    where admin_message_id = #{adminMessageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin_message
+    where admin_message_id = #{adminMessageId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bicyclesharing.adminmessage.entity.AdminMessage" >
+    insert into admin_message (admin_message_id, admin_message_title, 
+      admin_message_time, admin_id, admin_message_content
+      )
+    values (#{adminMessageId,jdbcType=INTEGER}, #{adminMessageTitle,jdbcType=VARCHAR}, 
+      #{adminMessageTime,jdbcType=TIMESTAMP}, #{adminId,jdbcType=INTEGER}, #{adminMessageContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bicyclesharing.adminmessage.entity.AdminMessage" >
+    insert into admin_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminMessageId != null" >
+        admin_message_id,
+      </if>
+      <if test="adminMessageTitle != null" >
+        admin_message_title,
+      </if>
+      <if test="adminMessageTime != null" >
+        admin_message_time,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="adminMessageContent != null" >
+        admin_message_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminMessageId != null" >
+        #{adminMessageId,jdbcType=INTEGER},
+      </if>
+      <if test="adminMessageTitle != null" >
+        #{adminMessageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="adminMessageTime != null" >
+        #{adminMessageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminMessageContent != null" >
+        #{adminMessageContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.adminmessage.entity.AdminMessage" >
+    update admin_message
+    <set >
+      <if test="adminMessageTitle != null" >
+        admin_message_title = #{adminMessageTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="adminMessageTime != null" >
+        admin_message_time = #{adminMessageTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminMessageContent != null" >
+        admin_message_content = #{adminMessageContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where admin_message_id = #{adminMessageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bicyclesharing.adminmessage.entity.AdminMessage" >
+    update admin_message
+    set admin_message_title = #{adminMessageTitle,jdbcType=VARCHAR},
+      admin_message_time = #{adminMessageTime,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      admin_message_content = #{adminMessageContent,jdbcType=LONGVARCHAR}
+    where admin_message_id = #{adminMessageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.adminmessage.entity.AdminMessage" >
+    update admin_message
+    set admin_message_title = #{adminMessageTitle,jdbcType=VARCHAR},
+      admin_message_time = #{adminMessageTime,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=INTEGER}
+    where admin_message_id = #{adminMessageId,jdbcType=INTEGER}
+  </update>
+</mapper>
