@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bicyclesharing.userfeedback.dao.UserFeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.bicyclesharing.userfeedback.entity.UserFeedback" >
+    <id column="feedback_id" property="feedbackId" jdbcType="INTEGER" />
+    <result column="feedback_title" property="feedbackTitle" jdbcType="VARCHAR" />
+    <result column="feedback_content" property="feedbackContent" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="bicycle_id" property="bicycleId" jdbcType="INTEGER" />
+    <result column="feedback_time" property="feedbackTime" jdbcType="TIMESTAMP" />
+    <result column="feedback_statement" property="feedbackStatement" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    feedback_id, feedback_title, feedback_content, user_id, bicycle_id, feedback_time, 
+    feedback_statement
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bicyclesharing.userfeedback.entity.UserFeedback" >
+    insert into user_feedback (feedback_id, feedback_title, feedback_content, 
+      user_id, bicycle_id, feedback_time, 
+      feedback_statement)
+    values (#{feedbackId,jdbcType=INTEGER}, #{feedbackTitle,jdbcType=VARCHAR}, #{feedbackContent,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{bicycleId,jdbcType=INTEGER}, #{feedbackTime,jdbcType=TIMESTAMP}, 
+      #{feedbackStatement,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bicyclesharing.userfeedback.entity.UserFeedback" >
+    insert into user_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        feedback_id,
+      </if>
+      <if test="feedbackTitle != null" >
+        feedback_title,
+      </if>
+      <if test="feedbackContent != null" >
+        feedback_content,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="bicycleId != null" >
+        bicycle_id,
+      </if>
+      <if test="feedbackTime != null" >
+        feedback_time,
+      </if>
+      <if test="feedbackStatement != null" >
+        feedback_statement,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="feedbackId != null" >
+        #{feedbackId,jdbcType=INTEGER},
+      </if>
+      <if test="feedbackTitle != null" >
+        #{feedbackTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackContent != null" >
+        #{feedbackContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bicycleId != null" >
+        #{bicycleId,jdbcType=INTEGER},
+      </if>
+      <if test="feedbackTime != null" >
+        #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedbackStatement != null" >
+        #{feedbackStatement,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.userfeedback.entity.UserFeedback" >
+    update user_feedback
+    <set >
+      <if test="feedbackTitle != null" >
+        feedback_title = #{feedbackTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackContent != null" >
+        feedback_content = #{feedbackContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bicycleId != null" >
+        bicycle_id = #{bicycleId,jdbcType=INTEGER},
+      </if>
+      <if test="feedbackTime != null" >
+        feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedbackStatement != null" >
+        feedback_statement = #{feedbackStatement,jdbcType=INTEGER},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.userfeedback.entity.UserFeedback" >
+    update user_feedback
+    set feedback_title = #{feedbackTitle,jdbcType=VARCHAR},
+      feedback_content = #{feedbackContent,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      bicycle_id = #{bicycleId,jdbcType=INTEGER},
+      feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      feedback_statement = #{feedbackStatement,jdbcType=INTEGER}
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+</mapper>
