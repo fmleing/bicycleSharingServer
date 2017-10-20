@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bicyclesharing.recharge.dao.RechargeMapper" >
+  <resultMap id="BaseResultMap" type="com.bicyclesharing.recharge.entity.Recharge" >
+    <id column="recharge_id" property="rechargeId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="recharge_amount" property="rechargeAmount" jdbcType="DECIMAL" />
+    <result column="remaining" property="remaining" jdbcType="DECIMAL" />
+    <result column="recharge_time" property="rechargeTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recharge_id, user_id, recharge_amount, remaining, recharge_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recharge
+    where recharge_id = #{rechargeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recharge
+    where recharge_id = #{rechargeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bicyclesharing.recharge.entity.Recharge" >
+    insert into recharge (recharge_id, user_id, recharge_amount, 
+      remaining, recharge_time)
+    values (#{rechargeId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{rechargeAmount,jdbcType=DECIMAL}, 
+      #{remaining,jdbcType=DECIMAL}, #{rechargeTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bicyclesharing.recharge.entity.Recharge" >
+    insert into recharge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rechargeId != null" >
+        recharge_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="rechargeAmount != null" >
+        recharge_amount,
+      </if>
+      <if test="remaining != null" >
+        remaining,
+      </if>
+      <if test="rechargeTime != null" >
+        recharge_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rechargeId != null" >
+        #{rechargeId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeAmount != null" >
+        #{rechargeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remaining != null" >
+        #{remaining,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeTime != null" >
+        #{rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.recharge.entity.Recharge" >
+    update recharge
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="rechargeAmount != null" >
+        recharge_amount = #{rechargeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remaining != null" >
+        remaining = #{remaining,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeTime != null" >
+        recharge_time = #{rechargeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where recharge_id = #{rechargeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.recharge.entity.Recharge" >
+    update recharge
+    set user_id = #{userId,jdbcType=INTEGER},
+      recharge_amount = #{rechargeAmount,jdbcType=DECIMAL},
+      remaining = #{remaining,jdbcType=DECIMAL},
+      recharge_time = #{rechargeTime,jdbcType=TIMESTAMP}
+    where recharge_id = #{rechargeId,jdbcType=INTEGER}
+  </update>
+</mapper>
