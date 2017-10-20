@@ -32,7 +32,7 @@
         <!-- 必须的（1 required） -->
         <!-- java模型生成器 -->
         <!-- targetProject:自动生成代码的位置 -->
-        <javaModelGenerator targetPackage="com.bicyclesharing.user.entity"
+        <javaModelGenerator targetPackage="com.bicyclesharing.userfeedback.entity"
                             targetProject="E:\Web\bicycleSharingServer\src\main\java"
                              >
             <!-- TODO enableSubPackages:是否让schema作为包的后缀 -->
@@ -43,14 +43,14 @@
 
         <!-- 必须的（1 required） -->
         <!-- map xml 生成器 -->
-        <sqlMapGenerator targetPackage="com.bicyclesharing.user.dao"
+        <sqlMapGenerator targetPackage="com.bicyclesharing.userfeedback.dao"
                          targetProject="E:\Web\bicycleSharingServer\src\main\java">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- 可选的（0 or 1） -->
         <!-- mapper 或者就是dao接口生成器 -->
-        <javaClientGenerator targetPackage="com.bicyclesharing.user.dao"
+        <javaClientGenerator targetPackage="com.bicyclesharing.userfeedback.dao"
                              targetProject="E:\Web\bicycleSharingServer\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true" />
@@ -60,7 +60,7 @@
         <!-- pojo 实体生成器 -->
         <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 -->
         <!-- schema即为数据库名 可不写 -->
-        <table  tableName="user" domainObjectName="User"
+        <table  tableName="user_feedback" domainObjectName="UserFeedback"
                 enableInsert="true" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false" selectByExampleQueryId="false">
             <!-- 忽略字段 可选的（0 or 1） -->
