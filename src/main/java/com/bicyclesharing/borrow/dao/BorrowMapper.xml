@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bicyclesharing.borrow.dao.BorrowMapper" >
+  <resultMap id="BaseResultMap" type="com.bicyclesharing.borrow.entity.Borrow" >
+    <id column="borrow_id" property="borrowId" jdbcType="INTEGER" />
+    <result column="bicycle_id" property="bicycleId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="borrow_start_time" property="borrowStartTime" jdbcType="TIMESTAMP" />
+    <result column="borrow_end_time" property="borrowEndTime" jdbcType="TIMESTAMP" />
+    <result column="borrow_start_x" property="borrowStartX" jdbcType="DOUBLE" />
+    <result column="borrow_start_y" property="borrowStartY" jdbcType="DOUBLE" />
+    <result column="borrow_end_x" property="borrowEndX" jdbcType="DOUBLE" />
+    <result column="borrow_end_y" property="borrowEndY" jdbcType="DOUBLE" />
+    <result column="cost" property="cost" jdbcType="DECIMAL" />
+    <result column="remaining" property="remaining" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    borrow_id, bicycle_id, user_id, borrow_start_time, borrow_end_time, borrow_start_x, 
+    borrow_start_y, borrow_end_x, borrow_end_y, cost, remaining
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrow
+    where borrow_id = #{borrowId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrow
+    where borrow_id = #{borrowId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bicyclesharing.borrow.entity.Borrow" >
+    insert into borrow (borrow_id, bicycle_id, user_id, 
+      borrow_start_time, borrow_end_time, borrow_start_x, 
+      borrow_start_y, borrow_end_x, borrow_end_y, 
+      cost, remaining)
+    values (#{borrowId,jdbcType=INTEGER}, #{bicycleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{borrowStartTime,jdbcType=TIMESTAMP}, #{borrowEndTime,jdbcType=TIMESTAMP}, #{borrowStartX,jdbcType=DOUBLE}, 
+      #{borrowStartY,jdbcType=DOUBLE}, #{borrowEndX,jdbcType=DOUBLE}, #{borrowEndY,jdbcType=DOUBLE}, 
+      #{cost,jdbcType=DECIMAL}, #{remaining,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bicyclesharing.borrow.entity.Borrow" >
+    insert into borrow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="borrowId != null" >
+        borrow_id,
+      </if>
+      <if test="bicycleId != null" >
+        bicycle_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="borrowStartTime != null" >
+        borrow_start_time,
+      </if>
+      <if test="borrowEndTime != null" >
+        borrow_end_time,
+      </if>
+      <if test="borrowStartX != null" >
+        borrow_start_x,
+      </if>
+      <if test="borrowStartY != null" >
+        borrow_start_y,
+      </if>
+      <if test="borrowEndX != null" >
+        borrow_end_x,
+      </if>
+      <if test="borrowEndY != null" >
+        borrow_end_y,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="remaining != null" >
+        remaining,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="borrowId != null" >
+        #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="bicycleId != null" >
+        #{bicycleId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="borrowStartTime != null" >
+        #{borrowStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowEndTime != null" >
+        #{borrowEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowStartX != null" >
+        #{borrowStartX,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowStartY != null" >
+        #{borrowStartY,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowEndX != null" >
+        #{borrowEndX,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowEndY != null" >
+        #{borrowEndY,jdbcType=DOUBLE},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="remaining != null" >
+        #{remaining,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.borrow.entity.Borrow" >
+    update borrow
+    <set >
+      <if test="bicycleId != null" >
+        bicycle_id = #{bicycleId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="borrowStartTime != null" >
+        borrow_start_time = #{borrowStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowEndTime != null" >
+        borrow_end_time = #{borrowEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowStartX != null" >
+        borrow_start_x = #{borrowStartX,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowStartY != null" >
+        borrow_start_y = #{borrowStartY,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowEndX != null" >
+        borrow_end_x = #{borrowEndX,jdbcType=DOUBLE},
+      </if>
+      <if test="borrowEndY != null" >
+        borrow_end_y = #{borrowEndY,jdbcType=DOUBLE},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="remaining != null" >
+        remaining = #{remaining,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where borrow_id = #{borrowId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.borrow.entity.Borrow" >
+    update borrow
+    set bicycle_id = #{bicycleId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      borrow_start_time = #{borrowStartTime,jdbcType=TIMESTAMP},
+      borrow_end_time = #{borrowEndTime,jdbcType=TIMESTAMP},
+      borrow_start_x = #{borrowStartX,jdbcType=DOUBLE},
+      borrow_start_y = #{borrowStartY,jdbcType=DOUBLE},
+      borrow_end_x = #{borrowEndX,jdbcType=DOUBLE},
+      borrow_end_y = #{borrowEndY,jdbcType=DOUBLE},
+      cost = #{cost,jdbcType=DECIMAL},
+      remaining = #{remaining,jdbcType=DECIMAL}
+    where borrow_id = #{borrowId,jdbcType=INTEGER}
+  </update>
+</mapper>
