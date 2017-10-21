@@ -1,177 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bicyclesharing.user.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.bicyclesharing.user.entity.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_account" jdbcType="DECIMAL" property="userAccount" />
-    <result column="user_credit" jdbcType="INTEGER" property="userCredit" />
-    <result column="user_cash" jdbcType="INTEGER" property="userCash" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bicyclesharing.user.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.bicyclesharing.user.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_account" property="userAccount" jdbcType="DECIMAL" />
+    <result column="user_credit" property="userCredit" jdbcType="INTEGER" />
+    <result column="user_cash" property="userCash" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     user_id, user_name, user_account, user_credit, user_cash
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.bicyclesharing.user.entity.User">
+  <insert id="insert" parameterType="com.bicyclesharing.user.entity.User" >
     insert into user (user_id, user_name, user_account, 
       user_credit, user_cash)
     values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userAccount,jdbcType=DECIMAL}, 
       #{userCredit,jdbcType=INTEGER}, #{userCash,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.bicyclesharing.user.entity.User">
+  <insert id="insertSelective" parameterType="com.bicyclesharing.user.entity.User" >
     insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
         user_id,
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         user_name,
       </if>
-      <if test="userAccount != null">
+      <if test="userAccount != null" >
         user_account,
       </if>
-      <if test="userCredit != null">
+      <if test="userCredit != null" >
         user_credit,
       </if>
-      <if test="userCash != null">
+      <if test="userCash != null" >
         user_cash,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="userName != null">
+      <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="userAccount != null">
+      <if test="userAccount != null" >
         #{userAccount,jdbcType=DECIMAL},
       </if>
-      <if test="userCredit != null">
+      <if test="userCredit != null" >
         #{userCredit,jdbcType=INTEGER},
       </if>
-      <if test="userCash != null">
+      <if test="userCash != null" >
         #{userCash,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.user.entity.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.user.entity.User" >
     update user
-    <set>
-      <if test="userName != null">
+    <set >
+      <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="userAccount != null">
+      <if test="userAccount != null" >
         user_account = #{userAccount,jdbcType=DECIMAL},
       </if>
-      <if test="userCredit != null">
+      <if test="userCredit != null" >
         user_credit = #{userCredit,jdbcType=INTEGER},
       </if>
-      <if test="userCash != null">
+      <if test="userCash != null" >
         user_cash = #{userCash,jdbcType=INTEGER},
       </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.user.entity.User">
-    update user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      user_account = #{userAccount,jdbcType=DECIMAL},
-      user_credit = #{userCredit,jdbcType=INTEGER},
-      user_cash = #{userCash,jdbcType=INTEGER}
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <resultMap id="BaseResultMap" type="com.bicyclesharing.user.entity.User">
-    <id column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_account" jdbcType="DECIMAL" property="userAccount" />
-    <result column="user_credit" jdbcType="INTEGER" property="userCredit" />
-    <result column="user_cash" jdbcType="INTEGER" property="userCash" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    user_id, user_name, user_account, user_credit, user_cash
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where user_id = #{userId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.bicyclesharing.user.entity.User">
-    insert into user (user_id, user_name, user_account, 
-      user_credit, user_cash)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userAccount,jdbcType=DECIMAL}, 
-      #{userCredit,jdbcType=INTEGER}, #{userCash,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.bicyclesharing.user.entity.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
-      </if>
-      <if test="userName != null">
-        user_name,
-      </if>
-      <if test="userAccount != null">
-        user_account,
-      </if>
-      <if test="userCredit != null">
-        user_credit,
-      </if>
-      <if test="userCash != null">
-        user_cash,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="userAccount != null">
-        #{userAccount,jdbcType=DECIMAL},
-      </if>
-      <if test="userCredit != null">
-        #{userCredit,jdbcType=INTEGER},
-      </if>
-      <if test="userCash != null">
-        #{userCash,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bicyclesharing.user.entity.User">
-    update user
-    <set>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="userAccount != null">
-        user_account = #{userAccount,jdbcType=DECIMAL},
-      </if>
-      <if test="userCredit != null">
-        user_credit = #{userCredit,jdbcType=INTEGER},
-      </if>
-      <if test="userCash != null">
-        user_cash = #{userCash,jdbcType=INTEGER},
-      </if>
-    </set>
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.user.entity.User">
+  <update id="updateByPrimaryKey" parameterType="com.bicyclesharing.user.entity.User" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
       user_account = #{userAccount,jdbcType=DECIMAL},
