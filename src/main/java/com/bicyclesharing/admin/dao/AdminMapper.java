@@ -2,6 +2,8 @@ package com.bicyclesharing.admin.dao;
 
 import com.bicyclesharing.admin.entity.Admin;
 
+import java.util.List;
+
 public interface AdminMapper {
     int deleteByPrimaryKey(Integer adminId);
 
@@ -16,4 +18,6 @@ public interface AdminMapper {
     int updateByPrimaryKey(Admin record);
 
     Admin selectAdminByName(String adminName);
+
+    List<Admin> selectAllAdmin();
 }

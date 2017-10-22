@@ -1,5 +1,7 @@
 package com.bicyclesharing.admin.entity;
 
+import java.util.Date;
+
 public class Admin {
     private Integer adminId;
 
@@ -8,6 +10,16 @@ public class Admin {
     private String adminPassword;
 
     private String adminEmail;
+
+    private Date adminDate;
+
+    public Date getAdminDate() {
+        return adminDate;
+    }
+
+    public void setAdminDate(Date adminDate) {
+        this.adminDate = adminDate;
+    }
 
     public Integer getAdminId() {
         return adminId;
