@@ -16,6 +16,12 @@
     from admin
     where admin_id = #{adminId,jdbcType=INTEGER}
   </select>
+  <select id="selectAdminByName" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from admin
+    where admin_name = #{adminName}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from admin
     where admin_id = #{adminId,jdbcType=INTEGER}
