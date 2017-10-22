@@ -1,20 +1,87 @@
-<!--引入jstl-->
-#include("../common/tag.vm")
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>管理员信息列表</title>
-    #parse("../common/head.vm")
+    #parse("/common/head.html")
 </head>
 
 <body data-type="widgets">
 <script src="/static/js/theme.js"></script>
 <div class="am-g tpl-g">
-    <!-- 加载顶部导航栏 -->
-    #parse("../common/header.vm")
-    <!-- 加载侧边导航栏 -->
-    #parse("../common/list.vm")
+## 加载顶部导航栏
+    #parse("/common/header.html")
+##  加载左侧导航栏
+    #parse("/common/list.html")
+    ##    用户信息
+        <div class="tpl-sidebar-user-panel">
+            <div class="tpl-user-panel-slide-toggleable">
+                <div  class="tpl-user-panel-profile-picture">>
+                    <img src="/static/img/admin/admin.jpg">
+                </div>
+                <span class="user-panel-logged-in-text">
+           <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+                ##                ${sessionScope.admin.adminName}
+          </span>
+                <a href="/admin/edit" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+            </div>
+        </div>
+    ##    菜单
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-link">
+                <a href="/admin/home" id="home">
+                    <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="/admin/user?page=1" id="user">
+                    <i class="am-icon-user sidebar-nav-link-logo"></i> 用户
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="/admin/bicycle?page=1" id="bicycle">
+                    <i class="am-icon-bicycle sidebar-nav-link-logo"></i> 单车
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="/admin/borrow?page=1" id="borrow">
+                    <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 骑借
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="/admin/change?page=1" id="recharge">
+                    <i class="am-icon-phone sidebar-nav-link-logo"></i> 充值
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="/admin/feedback?page=1" id="feedback">
+                    <i class="am-icon-android sidebar-nav-link-logo"></i> 用户反馈
+                </a>
+            </li>
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-street-view sidebar-nav-link-logo"></i> 管理员
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="/admin/admin-list?page=1" id="admin-list">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员列表
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href="/admin/admin-message?page=1" id="admin-message">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员通知
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href="/admin/admin-register" id="admin-register">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加管理员
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
@@ -52,49 +119,49 @@
                                     <thead>
                                     <tr>
                                         <th>管理员名</th>
-                                        <th>邮箱</th>
-                                        <th>时间</th>
+                                        <th>管理员邮箱</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${requestScope.pageAdmins }" var="admin">
+                                    #foreach($admin in $pageAdmins)
                                         <tr class="gradeX">
-                                            <td class="am-text-middle">${admin.adminName }</td>
-                                            <td class="am-text-middle">${admin.adminEmail }</td>
+                                            <td class="am-text-middle">${admin.adminName}</td>
+                                            <td class="am-text-middle">${admin.adminEmail}</td>
                                             <td class="am-text-middle">
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="admin-admin-editadmin-show/${admin.adminId }">
+                                                    <a href="/admin/edit/${admin.adminId}">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="admin-admin-removeadmin-execute/${admin.adminId }"
+                                                    <a href="/admin/remove/${admin.adminId}"
                                                        class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                    </c:forEach>
+                                    #end
+##                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
-                            <c:if test="${requestScope.pagePoint != null }">
+                            #if($pagePoint)
                                 <div class="am-u-lg-12 am-cf" style="font-size:14px;">
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
                                             <li>
-                                                <a href="/admin/admin-lis?page=${requestScope.pagePoint - 1 }">«</a>
+                                                <a href="/admin/admin-lis?page=${pagePoint}-1">«</a>
                                             </li>
-                                            <li><a>当前第${requestScope.pagePoint }页(共${requestScope.pageMax }页)</a></li>
+                                            <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
                                             <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a>
                                             </li>
                                             <li>
-                                                <a href="/admin/admin-list?page=${requestScope.pagePoint + 1 }">»</a>
+                                                <a href="/admin/admin-list?page=${pagePoint}+1">»</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                            </c:if>
+                            #end
                         </div>
                     </div>
                 </div>
@@ -112,7 +179,7 @@
             if (page == "") {
                 page = 1;
             }
-            window.location = "/admin/admin-list?page=" + page;
+            window.location = "/admin/list?page="+page;
         });
         $("#skipBtn > input").on("click", function () {
             return false;
