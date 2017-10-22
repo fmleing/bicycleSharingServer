@@ -3,16 +3,16 @@
 <html>
 <head>
     <title>修改管理员信息</title>
-    #parse("../common/head.html")
+    #parse("../common/head.vm")
 </head>
 
 <body data-type="widgets">
 <script src="/static/js/theme.js"></script>
 <div class="am-g tpl-g">
     <!-- 加载顶部导航栏 -->
-    #parse("../common/header.html")
+    #parse("../common/header.vm")
     <!-- 加载侧边导航栏 -->
-    #parse("../common/list.html")
+    #parse("../common/list.vm")
 
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">

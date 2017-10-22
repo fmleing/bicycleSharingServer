@@ -1,175 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>管理员信息列表</title>
-    #parse("/common/head.html")
-</head>
+#set($page_title="管理员界面")
+#set($body_name="管理员列表")
 
-<body data-type="widgets">
-<script src="/static/js/theme.js"></script>
-<div class="am-g tpl-g">
-## 加载顶部导航栏
-    #parse("/common/header.html")
-##  加载左侧导航栏
-    #parse("/common/list.html")
-    ##    用户信息
-        <div class="tpl-sidebar-user-panel">
-            <div class="tpl-user-panel-slide-toggleable">
-                <div  class="tpl-user-panel-profile-picture">>
-                    <img src="/static/img/admin/admin.jpg">
-                </div>
-                <span class="user-panel-logged-in-text">
-           <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                ##                ${sessionScope.admin.adminName}
-          </span>
-                <a href="/admin/edit" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
-            </div>
-        </div>
-    ##    菜单
-        <ul class="sidebar-nav">
-            <li class="sidebar-nav-link">
-                <a href="/admin/home" id="home">
-                    <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
-                </a>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="/admin/user?page=1" id="user">
-                    <i class="am-icon-user sidebar-nav-link-logo"></i> 用户
-                </a>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="/admin/bicycle?page=1" id="bicycle">
-                    <i class="am-icon-bicycle sidebar-nav-link-logo"></i> 单车
-                </a>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="/admin/borrow?page=1" id="borrow">
-                    <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 骑借
-                </a>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="/admin/change?page=1" id="recharge">
-                    <i class="am-icon-phone sidebar-nav-link-logo"></i> 充值
-                </a>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="/admin/feedback?page=1" id="feedback">
-                    <i class="am-icon-android sidebar-nav-link-logo"></i> 用户反馈
-                </a>
-            </li>
-            <li class="sidebar-nav-link">
-                <a href="javascript:;" class="sidebar-nav-sub-title">
-                    <i class="am-icon-street-view sidebar-nav-link-logo"></i> 管理员
-                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                </a>
-                <ul class="sidebar-nav sidebar-nav-sub">
-                    <li class="sidebar-nav-link">
-                        <a href="/admin/admin-list?page=1" id="admin-list">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员列表
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-link">
-                        <a href="/admin/admin-message?page=1" id="admin-message">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员通知
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-link">
-                        <a href="/admin/admin-register" id="admin-register">
-                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加管理员
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+<div class="widget-body  am-fr">
+    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+        <div class="am-form-group"></div>
     </div>
-
-    <!-- 内容区域 -->
-    <div class="tpl-content-wrapper">
-        <div class="row-content am-cf">
-            <div class="row">
-                <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-                    <div class="widget am-cf">
-                        <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">管理员列表</div>
-                        </div>
-                        <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
-                                <div class="am-form-group"></div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                </div>
-                            </div>
-                            <!--按用户名(手机号)搜索-->
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <form action="admin/admin-searchadmin"
-                                      method="get">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field" name="name">
-                                        <span class="am-input-group-btn">
+    <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+        <div class="am-form-group tpl-table-list-select">
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+        <form action="admin/admin-searchadmin"
+              method="get">
+            <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                <input type="text" class="am-form-field" name="name">
+                <span class="am-input-group-btn">
             								<button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
                                                     type="submit"></button>
           								</span>
-                                    </div>
-                                </form>
-                            </div>
+            </div>
+        </form>
+    </div>
 
-                            <div class="am-u-sm-12">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
-                                    <thead>
-                                    <tr>
-                                        <th>管理员名</th>
-                                        <th>管理员邮箱</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    #foreach($admin in $pageAdmins)
-                                        <tr class="gradeX">
-                                            <td class="am-text-middle">${admin.adminName}</td>
-                                            <td class="am-text-middle">${admin.adminEmail}</td>
-                                            <td class="am-text-middle">
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="/admin/edit/${admin.adminId}">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="/admin/remove/${admin.adminId}"
-                                                       class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    #end
-##                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                            #if($pagePoint)
-                                <div class="am-u-lg-12 am-cf" style="font-size:14px;">
-                                    <div class="am-fr">
-                                        <ul class="am-pagination tpl-pagination">
-                                            <li>
-                                                <a href="/admin/admin-lis?page=${pagePoint}-1">«</a>
-                                            </li>
-                                            <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
-                                            <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a>
-                                            </li>
-                                            <li>
-                                                <a href="/admin/admin-list?page=${pagePoint}+1">»</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            #end
+    <div class="am-u-sm-12">
+        <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+            <thead>
+            <tr>
+                <th>管理员名</th>
+                <th>管理员邮箱</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+                #foreach($admin in $pageAdmins)
+                <tr class="gradeX">
+                    <td class="am-text-middle">${admin.adminName}</td>
+                    <td class="am-text-middle">${admin.adminEmail}</td>
+                    <td class="am-text-middle">
+                        <div class="tpl-table-black-operation">
+                            <a href="/admin/edit/${admin.adminId}">
+                                <i class="am-icon-pencil"></i> 编辑
+                            </a>
+                            <a href="/admin/remove/${admin.adminId}"
+                               class="tpl-table-black-operation-del">
+                                <i class="am-icon-trash"></i> 删除
+                            </a>
                         </div>
-                    </div>
-                </div>
+                    </td>
+                </tr>
+                #end
+            </tbody>
+        </table>
+    </div>
+    #if($pagePoint)
+        <div class="am-u-lg-12 am-cf" style="font-size:14px;">
+            <div class="am-fr">
+                <ul class="am-pagination tpl-pagination">
+                    <li>
+                        <a href="/admin/admin-lis?page=${pagePoint}-1">«</a>
+                    </li>
+                    <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
+                    <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a>
+                    </li>
+                    <li>
+                        <a href="/admin/admin-list?page=${pagePoint}+1">»</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    #end
 </div>
-
 <script src="/static/js/amazeui.min.js"></script>
 <script src="/static/js/app.js"></script>
 <script type="text/javascript">
@@ -186,7 +86,3 @@
         });
     })
 </script>
-
-</body>
-
-</html>
