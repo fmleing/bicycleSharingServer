@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Tomecs on 2017/10/21.
  */
@@ -30,5 +32,14 @@ public class AdminServiceImpl implements AdminService {
             }
             return 1;
         }
+    }
+
+    /**
+     * 获取所有用户信息
+     * @return
+     */
+    @Override
+    public List<Admin> getAllAdmin() {
+        return adminMapper.selectAllAdmin();
     }
 }
