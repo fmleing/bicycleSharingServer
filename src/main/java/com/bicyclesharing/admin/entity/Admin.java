@@ -13,6 +13,15 @@ public class Admin {
 
     private Date adminDate;
 
+    public Admin() {
+    }
+
+    public Admin(String adminName, String adminPassword, String adminEmail) {
+        this.adminName = adminName;
+        this.adminPassword = adminPassword;
+        this.adminEmail = adminEmail;
+    }
+
     public Date getAdminDate() {
         return adminDate;
     }

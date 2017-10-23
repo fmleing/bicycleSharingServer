@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
+#set($layout="/layout/reister.vm")
 
-<head>
-    <title>管理员注册</title>
-    #parse("/common/head.vm")
-</head>
-
-<body data-type="login">
-<script src="/static/js/theme.js"></script>
 <div class="am-g tpl-g">
     <div class="tpl-login">
         <div class="tpl-login-content">
@@ -39,8 +31,3 @@
         </div>
     </div>
 </div>
-<script src="/static/js/amazeui.min.js"></script>
-<script src="/static/js/app.js"></script>
-</body>
-
-</html>
