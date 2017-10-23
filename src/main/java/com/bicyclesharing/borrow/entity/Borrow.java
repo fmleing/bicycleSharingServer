@@ -26,6 +26,22 @@ public class Borrow {
 
     private BigDecimal remaining;
 
+    public Borrow() {
+    }
+
+    public Borrow(Integer borrowId, Integer bicycleId, Date borrowStartTime, Date borrowEndTime, Double borrowStartX, Double borrowStartY, Double borrowEndX, Double borrowEndY, BigDecimal cost, BigDecimal remaining) {
+        this.borrowId = borrowId;
+        this.bicycleId = bicycleId;
+        this.borrowStartTime = borrowStartTime;
+        this.borrowEndTime = borrowEndTime;
+        this.borrowStartX = borrowStartX;
+        this.borrowStartY = borrowStartY;
+        this.borrowEndX = borrowEndX;
+        this.borrowEndY = borrowEndY;
+        this.cost = cost;
+        this.remaining = remaining;
+    }
+
     public Integer getBorrowId() {
         return borrowId;
     }
