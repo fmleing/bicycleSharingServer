@@ -1,0 +1,32 @@
+#set($page_title="发布管理员通知")
+#set($body_name="添加管理员通知")
+
+<div class="widget-body am-fr">
+    <form class="am-form tpl-form-line-form" action="admin-admin-addadminmessage-execute" method="post">
+        <input type="hidden" name="adminId" value="${sessionScope.admin.adminId }"/>
+        <div class="am-form-group">
+            <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title">Title</span></label>
+            <div class="am-u-sm-9">
+                <input type="text" max="20" class="tpl-form-input" id="user-name" placeholder="请输入标题文字" name="title">
+                <small>请填写标题文字20字以内。</small>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
+            <div class="am-u-sm-9">
+                <textarea class="" rows="10" id="user-intro" placeholder="请输入文章内容" name="content"></textarea>
+            </div>
+        </div>
+        <div class="am-form-group">
+            <div class="am-u-sm-9 am-u-sm-push-3">
+                <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/static/js/amazeui.min.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+
+</html>
