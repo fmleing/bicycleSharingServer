@@ -38,14 +38,14 @@
             <tbody>
             #foreach(${borrow} in ${pageBorrows})
                 <tr class="gradeX">
-                    <td class="am-text-middle">${borrow.borrowId }</td>
-                    <td class="am-text-middle">${borrow.bicycleId }</td>
+                    <td class="am-text-middle">${borrow.borrowId}</td>
+                    <td class="am-text-middle">${borrow.bicycleId}</td>
                     <td class="am-text-middle">${borrow.userId}</td>
                     <td class="am-text-middle">
-                        <fmt:formatDate value="${borrow.borrowStartTime }" type="both"/>
+                        <fmt:formatDate value="${borrow.borrowStartTime}" type="both"/>
                     </td>
                     <td class="am-text-middle">
-                        <fmt:formatDate value="${borrow.borrowEndTime }" type="both"/>
+                        <fmt:formatDate value="${borrow.borrowEndTime}" type="both"/>
                     </td>
                     <td class="am-text-middle">${borrow.borrowStartX}</td>
                     <td class="am-text-middle">${borrow.borrowStartY}</td>

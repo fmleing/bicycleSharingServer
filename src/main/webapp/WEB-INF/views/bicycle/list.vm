@@ -49,7 +49,7 @@
                                             <td class="am-text-middle">${bicycle.bicycleStatement}</td>
                                             <td class="am-text-middle">
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="/bicycle/admin-bicycle-editbicycle-show/${bicycle.bicycleId }">
+                                                    <a href="/bicycle/admin-bicycle-editbicycle-show/${bicycle.bicycleId}">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
                                                     <a href="/bicycle/admin-bicycle-delete-execute/${bicycle.bicycleId}" class="tpl-table-black-operation-del">
@@ -67,8 +67,8 @@
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
                                             #set($per = ${pagePoint} - 1)
-                                            <li><a href="/bicycle/admin-bicycle-list-show?page=${pre}">«</a></li>
-                                            <li><a>当前第${pagePoint}页(共${pageMax }页)</a></li>
+                                            <li><a href="/bicycle/admin-bicycle-list-show?page=${per}">«</a></li>
+                                            <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
                                             <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a></li>
                                             #set($left = ${pagePoint} + 1)
                                             <li><a href="/bicycle/admin-bicycle-list-show?page=${left}">»</a></li>

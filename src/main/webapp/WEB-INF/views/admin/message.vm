@@ -37,7 +37,6 @@
             </thead>
             <tbody>
             #foreach($adminMessage in $pageAdminMessages)
-##                                    <c:forEach items="${requestScope.pageAdminMessages }" var="adminMessage">
                 <td class="am-text-middle">${adminMessage.adminMessageTitle}</td>
                 <td class="am-text-middle">${adminMessage.adminId}</td>
                 <td class="am-text-middle">
@@ -61,20 +60,20 @@
             </tbody>
         </table>
     </div>
-    <c:if test="${requestScope.pagePoint != null}">
+    #if(${pagePoint})
         <div class="am-u-lg-12 am-cf" style="font-size:14px;">
             <div class="am-fr">
                 <ul class="am-pagination tpl-pagination">
                     #set($per = ${pagePoint} - 1)
                     <li><a href="/admin/admin-admin-message-show?page=${per}">«</a></li>
-                    <li><a>当前第${requestScope.pagePoint }页(共${pageMax}页)</a></li>
+                    <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
                     <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a></li>
                     #set($left = ${pagePoint} + 1)
                     <li><a href="/admin/message?page=${left}">»</a></li>
                 </ul>
             </div>
         </div>
-    </c:if>
+    #end
 </div>
 
 <script src="/static/js/theme.js"></script>

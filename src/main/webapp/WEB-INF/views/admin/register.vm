@@ -7,7 +7,7 @@
             <span class="tpl-login-content-info">
                   创建一个新的管理员
               </span>
-            <form autocomplete="off" class="am-form tpl-form-line-form" action="admin-admin-register-execute" method="post">
+            <form autocomplete="off" class="am-form tpl-form-line-form" action="/admin/admin-admin-register-execute" method="post">
                 <div class="am-form-group">
                     <input type="text" class="tpl-form-input" placeholder="管理员名" name="name">
 
@@ -25,7 +25,7 @@
                     <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
                 </div>
                 <div class="am-form-group" style="text-align: center;">
-                    <a href="admin-index-index-show" style="color: #666; font-size: 14px;">返回控制台</a>
+                    <a href="/index/admin-index-index-show" style="color: #666; font-size: 14px;">返回控制台</a>
                 </div>
             </form>
         </div>

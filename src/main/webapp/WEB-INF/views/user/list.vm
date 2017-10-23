@@ -42,7 +42,7 @@
                     <td class="am-text-middle">${users.userCash}</td>
                     <td class="am-text-middle">
                         <div class="tpl-table-black-operation">
-                            <a href="/user/admin-user-resetcredit-execute/${users.userId }">信用重置</a>
+                            <a href="/user/admin-user-resetcredit-execute/${users.userId}">信用重置</a>
                             <a href="admin-admin-removeuser-execute/${users.userId}"
                                class="tpl-table-black-operation-del">
                                 删除
