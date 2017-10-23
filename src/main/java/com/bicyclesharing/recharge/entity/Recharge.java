@@ -14,6 +14,16 @@ public class Recharge {
 
     private Date rechargeTime;
 
+    public Recharge() {
+    }
+
+    public Recharge(Integer userId, BigDecimal rechargeAmount, BigDecimal remaining, Date rechargeTime) {
+        this.userId = userId;
+        this.rechargeAmount = rechargeAmount;
+        this.remaining = remaining;
+        this.rechargeTime = rechargeTime;
+    }
+
     public Integer getRechargeId() {
         return rechargeId;
     }
