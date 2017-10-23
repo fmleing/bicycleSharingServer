@@ -62,6 +62,6 @@ public class RechargeController {
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageRecharges",pageRecharges);
 
-        return "recharge/recharge_list";
+        return "recharge/list";
     }
 }

@@ -64,7 +64,7 @@ public class BorrowController {
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageBorrows",pageBorrows);
 
-        return "borrow/borrow_list";
+        return "borrow/list";
     }
 
     @RequestMapping(value = "admin-borrow-delete-execute/{id}", method = RequestMethod.GET)

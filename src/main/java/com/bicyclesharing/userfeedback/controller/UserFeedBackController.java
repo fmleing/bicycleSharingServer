@@ -65,7 +65,7 @@ public class UserFeedBackController {
         requestMap.put("pageMax", pageMax);
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageUserFeedbacks", pageUserFeedbacks);
-        return "feedback/userFeedback_list";
+        return "feedback/list";
     }
 
     /**

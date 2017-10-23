@@ -26,7 +26,7 @@ public class BicycleController {
     /**
      * 1.单车列表显示
      *
-     * @return bicycle/bicycle_list.jsp
+     * @return bicycle/list.vm
      */
     @RequestMapping(value = "admin-bicycle-list-show", method = RequestMethod.GET)
     public String listShow(Map<String, Object> requestMap, @RequestParam("page") Integer page) {
@@ -69,36 +69,36 @@ public class BicycleController {
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageBicycles", pageBicycles);
 
-        return "bicycle/bicycle_list";
+        return "bicycle/list";
     }
 
     /**
      * 2.搜索单车显示
      *
-     * @return bicycle/bicycle_list.jsp
+     * @return bicycle/list.vm
      */
     @RequestMapping(value = "admin-bicycle-searchbicycle-show", method = RequestMethod.GET)
     public String searchBicycleShow(Map<String, Object> requestMap, @RequestParam("statement") Integer statement) {
         requestMap.put("nav", "bicycle-list");
         ArrayList<Bicycle> bicycles = (ArrayList<Bicycle>) bicycleService.getBicycleByStatement(statement);
         requestMap.put("pageBicycles", bicycles);
-        return "bicycle/bicycle_list";
+        return "bicycle/list";
     }
 
     /**
      * 3.新增单车显示
      *
-     * @return bicycle/bicycle_add.jsp
+     * @return bicycle/add.vm
      */
     @RequestMapping(value = "admin-bicycle-addbicycle-show", method = RequestMethod.GET)
     public String addBicycleShow() {
-        return "bicycle/bicycle_add";
+        return "bicycle/add";
     }
 
     /**
      * 4.新增单车执行
      *
-     * @return admin/bicycle_list.jsp
+     * @return
      */
     @RequestMapping(value = "admin-bicycle-addbicycle-execute", method = RequestMethod.POST)
     public String addBicycleExcute(@RequestParam("bicycleCurrentX") Double bicycleCurrentX, @RequestParam("bicycleCurrentY") Double bicycleCurrentY, @RequestParam("bicycleStatement") Integer bicycleStatement, @RequestParam("n") Integer n) {
@@ -116,7 +116,7 @@ public class BicycleController {
     public String editBicycleShow(@PathVariable("id") Integer id, Map<String, Object> requestMap) {
         Bicycle bicycle = bicycleService.getBicycleById(id);
         requestMap.put("bicycle", bicycle);
-        return "bicycle/bicycle_edit";
+        return "bicycle/edit";
     }
 
     @RequestMapping(value = "admin-bicycle-editbicycle-execute", method = RequestMethod.POST)

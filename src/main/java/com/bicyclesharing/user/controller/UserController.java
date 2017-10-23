@@ -23,7 +23,7 @@ public class UserController {
 
     /**
      * 1.用户列表显示
-     * @return user/user_list.jsp
+     * @return user/list.vm
      */
     @RequestMapping(value="admin-user-list-show", method= RequestMethod.GET)
     public String listShow(Map<String, Object> requestMap, @RequestParam("page") Integer page) {
@@ -66,13 +66,13 @@ public class UserController {
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageUsers",pageUsers);
 
-        return "user/user_list";
+        return "user/list";
     }
 
     /**
      * 2.根据id删除用户执行
      * @param id 用户id
-     * @return user_list.jsp
+     * @return user/list.vm
      */
     @RequestMapping(value="admin-admin-removeuser-execute/{id}",method=RequestMethod.GET)
     public String removeUserExecute(@PathVariable Integer id){
@@ -82,14 +82,14 @@ public class UserController {
 
     /**
      * 3.搜索用户显示
-     * @return user/user_list.jsp
+     * @return user/ist.vm
      */
     @RequestMapping(value="admin-user-searchuser-show",method=RequestMethod.GET)
     public String searchUserShow(Map<String, Object> requestMap, @RequestParam("username") String username){
         requestMap.put("nav", "user_list");
         ArrayList<User> users = (ArrayList<User>) userService.getUserByNameLike(username);
         requestMap.put("pageUsers", users);
-        return "user/user_list";
+        return "user/list";
     }
 
     /**
