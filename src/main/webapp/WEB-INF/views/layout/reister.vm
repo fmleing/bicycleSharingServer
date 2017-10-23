@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>管理员注册</title>
+    #parse("/common/head.vm")
+</head>
+
+<body data-type="login">
+    $screen_content
+<script src="/static/js/theme.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
+
