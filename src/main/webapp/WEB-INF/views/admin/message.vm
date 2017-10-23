@@ -1,28 +1,6 @@
-#include("../common/tag.vm")
+#set($page_title="管理员通知")
+#set($body_name="管理员通知列表")
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>管理员通知</title>
-    #parse("../common/head.vm")
-</head>
-
-<body data-type="widgets">
-<div class="am-g tpl-g">
-##    <!-- 加载顶部导航栏 -->
-    #parse("../common/header.vm")
-##    <!-- 加载侧边导航栏 -->
-    #parse("../common/list.vm")
-
-##    <!-- 内容区域 -->
-    <div class="tpl-content-wrapper">
-        <div class="row-content am-cf">
-            <div class="row">
-                <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
-                    <div class="widget am-cf">
-                        <div class="widget-head am-cf">
-                            <div class="widget-title  am-cf">管理员通知列表</div>
-                        </div>
                         <div class="widget-body  am-fr">
                             <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
                                 <div class="am-form-group">
@@ -96,12 +74,6 @@
                                 </div>
                             </c:if>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script src="/static/js/theme.js"></script>
 <script src="/static/js/amazeui.min.js"></script>
