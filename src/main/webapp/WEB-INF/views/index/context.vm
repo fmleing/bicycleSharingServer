@@ -1,14 +1,6 @@
 #set($page_title="单车后台管理")
 #set($body_name="控制台主页")
 
-<body data-type="index">
-<div class="am-g tpl-g">
-    <!-- 加载顶部导航栏 -->
-    <jsp:include page="../common/header.jsp"/>
-    <!-- 加载侧边导航栏 -->
-    <jsp:include page="../common/list.jsp"/>
-
-    <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
         <div class="container-fluid am-cf">
             <div class="row">
@@ -32,12 +24,11 @@
                             <div class="am-fl">
                                 <div class="widget-fluctuation-description-amount text-success" am-cf
                                      style="font-size: 14px;">
-                                    今日用户充值金额: ${requestScope.rechargeCount} |今日已消费金额: ${requestScope.borrowCost }
+                                    今日用户充值金额: ${rechargeCount} |今日已消费金额: ${borrowCost}
                                     <br>
-                                    当前使用中车辆: ${requestScope.bicycleCountUsing }
+                                    当前使用中车辆: ${bicycleCountUsing }
                                     <br>
-                                    绿色车辆数: ${requestScope.bicycleCountGreen}|红色车辆数: ${requestScope.bicycleCountRed}
-                                    <!-- <button class="widget-fluctuation-tpl-btn"><i class="am-icon-calendar"></i>更多记录</button> -->
+                                    绿色车辆数: ${bicycleCountGreen}|红色车辆数: ${bicycleCountRed}
                                 </div>
                             </div>
                             <div class="am-fr am-cf">
@@ -55,11 +46,11 @@
                         </div>
                         <div class="widget-statistic-body">
                             <div class="widget-statistic-value">
-                                ${requestScope.userCount }
+                                ${userCount}
                             </div>
                         </div>
                         <div class="widget-statistic-description">
-                            <a href="${pageContext.request.contextPath }/admin-user-list-show?page=1"
+                            <a href="/user/admin-user-list-show?page=1"
                                style="color:#9cdcf2;">点击查看用户列表与更多用户相关操作</a>
                         </div>
                         <span class="widget-statistic-icon am-icon-user"></span>
@@ -72,10 +63,10 @@
                         </div>
                         <div class="widget-statistic-body">
                             <div class="widget-statistic-value">
-                                ${requestScope.bicycleCount }
+                                ${bicycleCount}
                             </div>
                             <div class="widget-statistic-description">
-                                <a href="${pageContext.request.contextPath }/admin-bicycle-list-show?page=1"
+                                <a href="/bicycle/admin-bicycle-list-show?page=1"
                                    style="color:#ded5e7;">点击查看单车列表与详细单车信息</a>
                             </div>
                             <span class="widget-statistic-icon am-icon-bicycle"></span>
@@ -115,18 +106,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${requestScope.adminMessages }" end="5" var="adminMessage">
+                            #foreach(${adminMessage} in ${adminMessages})
                                 <tr class="gradeX">
                                     <td>${adminMessage.adminMessageTitle}</td>
                                     <td>
                                         <div class="tpl-table-black-operation">
-                                            <a href="${pageContext.request.contextPath }/admin-index-message-show/${adminMessage.adminMessageId }">
+                                            <a href="/index/admin-index-message-show/${adminMessage.adminMessageId}">
                                                 <i class="am-icon-list-alt"></i> 查看
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-                            </c:forEach>
+                            #end
                             </tbody>
                         </table>
                     </div>
@@ -139,14 +130,14 @@
                     <div class="tpl-user-card-title" style="font-size: 20px;">
                         员工证
                     </div>
-                    <img class="achievement-image" src="${pageContext.request.contextPath }/adminPhoto/admin2.png"
+                    <img class="achievement-image" src="/static/img/admin/admin2.png"
                          alt="" width=80 height=80>
                     <div class="achievement-subheading">
-                        <p style="font-size:18px; font-weight: bold;">${sessionScope.admin.adminName }</p>
+                        <p style="font-size:18px; font-weight: bold;">${admin.adminName}</p>
                     </div>
                     <div class="achievement-description" style="text-align: left; margin-left: 20px;">
-                        <p style="font-size:16px">管理员编号：${sessionScope.admin.adminId }</p>
-                        <p style="font-size: 16px">联系邮箱：${sessionScope.admin.adminEmail }</p>
+                        <p style="font-size:16px">管理员编号：${admin.adminId}</p>
+                        <p style="font-size: 16px">联系邮箱：${admin.adminEmail}</p>
                     </div>
                 </div>
             </div>

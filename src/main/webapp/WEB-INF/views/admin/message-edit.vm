@@ -2,19 +2,19 @@
 #set($body_name="更改管理员通知")
 
 <div class="widget-body am-fr">
-    <form class="am-form tpl-form-line-form" action="${pageContext.request.contextPath}/admin-admin-editadminmessage-execute" method="post">
-        <input type="hidden" name="adminMessageId" value="${requestScope.adminMessage.adminMessageId }"/>
+    <form class="am-form tpl-form-line-form" action="/admin/admin-admin-editadminmessage-execute" method="post">
+        <input type="hidden" name="adminMessageId" value="${adminMessage.adminMessageId}"/>
         <div class="am-form-group">
             <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title">Title</span></label>
             <div class="am-u-sm-9">
-                <input type="text" max="20" class="tpl-form-input" id="user-name" placeholder="请输入标题文字" name="title" value="${requestScope.adminMessage.adminMessageTitle}">
+                <input type="text" max="20" class="tpl-form-input" id="user-name" placeholder="请输入标题文字" name="title" value="${adminMessage.adminMessageTitle}">
                 <small>请填写标题文字20字以内。</small>
             </div>
         </div>
         <div class="am-form-group">
             <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
             <div class="am-u-sm-9">
-                <textarea class="" rows="10" id="user-intro" placeholder="请输入文章内容" name="content">${requestScope.adminMessage.adminMessageContent}</textarea>
+                <textarea class="" rows="10" id="user-intro" placeholder="请输入文章内容" name="content">${adminMessage.adminMessageContent}</textarea>
             </div>
         </div>
         <div class="am-form-group">
