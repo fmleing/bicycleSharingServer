@@ -13,6 +13,9 @@ public class AdminMessage {
 
     private String adminMessageContent;
 
+    public AdminMessage() {
+    }
+
     public AdminMessage(String adminMessageTitle, Date adminMessageTime, Integer adminId, String adminMessageContent) {
         this.adminMessageTitle = adminMessageTitle;
         this.adminMessageTime = adminMessageTime;

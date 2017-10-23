@@ -11,38 +11,38 @@
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
                 ${sessionScope.admin.adminName}
           </span>
-            <a href="${pageContext.request.contextPath}/admin-index-edit-show" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+            <a href="${rc.contextPath}/admin-index-edit-show" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
         </div>
     </div>
 ##    菜单
     <ul class="sidebar-nav">
         <li class="sidebar-nav-link">
-            <a href="${pageContext.request.contextPath}/admin-index-index-show" id="index">
+            <a href="/index/admin-index-index-show" id="index">
                 <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="${pageContext.request.contextPath}/admin-user-list-show?page=1" id="user">
+            <a href="/user/admin-user-list-show?page=1" id="user">
                 <i class="am-icon-user sidebar-nav-link-logo"></i> 用户
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="${pageContext.request.contextPath}/admin-bicycle-list-show?page=1" id="bicycle">
+            <a href="/bicycle/admin-bicycle-list-show?page=1" id="bicycle">
                 <i class="am-icon-bicycle sidebar-nav-link-logo"></i> 单车
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="${pageContext.request.contextPath}/admin-borrow-list-show?page=1" id="borrow">
+            <a href="/borrow/admin-borrow-list-show?page=1" id="borrow">
                 <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 骑借
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="${pageContext.request.contextPath}/admin-recharge-list-show?page=1" id="recharge">
+            <a href="/recharge/admin-recharge-list-show?page=1" id="recharge">
                 <i class="am-icon-phone sidebar-nav-link-logo"></i> 充值
             </a>
         </li>
         <li class="sidebar-nav-link">
-            <a href="${pageContext.request.contextPath}/admin-feedback-list-show?page=1" id="feedback">
+            <a href="/userfeadback/admin-feedback-list-show?page=1" id="feedback">
                 <i class="am-icon-android sidebar-nav-link-logo"></i> 用户反馈
             </a>
         </li>
@@ -53,17 +53,17 @@
             </a>
             <ul class="sidebar-nav sidebar-nav-sub">
                 <li class="sidebar-nav-link">
-                    <a href="${pageContext.request.contextPath}/admin-admin-list-show?page=1" id="admin-list">
+                    <a href="/admin/admin-admin-list-show?page=1" id="admin-list">
                         <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员列表
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="${pageContext.request.contextPath}/admin-admin-message-show?page=1" id="admin-message">
+                    <a href="/admin/admin-admin-message-show?page=1" id="admin-message">
                         <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 管理员通知
                     </a>
                 </li>
                 <li class="sidebar-nav-link">
-                    <a href="${pageContext.request.contextPath}/admin-admin-register-show" id="admin-register">
+                    <a href="/admin/admin-admin-register-show" id="admin-register">
                         <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加管理员
                     </a>
                 </li>

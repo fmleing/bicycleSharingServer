@@ -3,11 +3,11 @@
 
 <div class="widget-body am-fr">
     <form autocomplete="off" class="am-form tpl-form-line-form" action="/admin/admin-edit" method="post">
-        <input type="hidden" name="id" value="${requestScope.admin.adminId }">
+        <input type="hidden" name="id" value="${rc.admin.adminId }">
         <div class="am-form-group">
             <label class="am-u-sm-3 am-form-label">管理员名 </label>
             <div class="am-u-sm-9">
-                <input type="text" class="tpl-form-input" name="name" value="${requestScope.admin.adminName }">
+                <input type="text" class="tpl-form-input" name="name" value="${rc.admin.adminName }">
             </div>
         </div>
         <div class="am-form-group">

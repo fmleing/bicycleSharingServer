@@ -34,7 +34,7 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "admin-admin-list-show", method = RequestMethod.GET)
-    public String listShow(Map<String, Object> requestMap, @RequestParam("page") Integer page) {
+    public ModelAndView listShow(Map<String, Object> requestMap, @RequestParam("page") Integer page) {
         //映射
         requestMap.put("nav", "admin-list");
         //获取管理员列表
@@ -70,7 +70,7 @@ public class AdminController {
         requestMap.put("pageMax", pageMax);
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageAdmins", pageAdmins);
-        return "/admin/list";
+        return new ModelAndView("/admin/list","requestMap",requestMap);
     }
 
     /**
@@ -81,18 +81,18 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "admin-admin-searchadmin-show", method = RequestMethod.GET)
-    public String searchAdminShow(Map<String, Object> requestMap, @RequestParam("name") String name) {
+    public ModelAndView searchAdminShow(Map<String, Object> requestMap, @RequestParam("name") String name) {
         requestMap.put("nav", "admin-list");
         ArrayList<Admin> admins = (ArrayList<Admin>) adminService.getAdminByNameLike(name);
         requestMap.put("pageAdmins", admins);
-        return "/admin/list";
+       return new ModelAndView("/admin/list","requestMap",requestMap);
     }
     @RequestMapping(value="admin-admin-searchmessage-show", method=RequestMethod.GET)
-    public String searchAdminMessageShow(Map<String, Object> requestMap, @RequestParam("title") String title){
+    public ModelAndView searchAdminMessageShow(Map<String, Object> requestMap, @RequestParam("title") String title){
         requestMap.put("nav", "admin-message");
         ArrayList<AdminMessage> adminMessages = (ArrayList<AdminMessage>) adminService.getAdminMessageByTitleLike(title);
         requestMap.put("pageAdminMessages", adminMessages);
-        return "/admin/message";
+        return new ModelAndView("/admin/message","requestMap",requestMap);
     }
 
     /**
@@ -103,7 +103,7 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "admin-admin-message-show", method = RequestMethod.GET)
-    public String messageShow(Map<String, Object> requestMap, @RequestParam("page") Integer page) {
+    public ModelAndView messageShow(Map<String, Object> requestMap, @RequestParam("page") Integer page) {
         requestMap.put("nav", "admin-message");
         ArrayList<AdminMessage> adminMessages = (ArrayList<AdminMessage>) adminService.getAllAdminMessage();
         requestMap.put("adminMessages", adminMessages);
@@ -139,7 +139,7 @@ public class AdminController {
         requestMap.put("pagePoint", pagePointer);
         requestMap.put("pageAdminMessages", pageAdminMessages);
 
-        return "/admin/message";
+        return new ModelAndView("/admin/message","requestMap",requestMap);
     }
 
     /**
@@ -221,10 +221,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "admin-admin-editadmin-show/{id}", method = RequestMethod.GET)
-    public String editAdminShow(Map<String, Object> requestMap, @PathVariable Integer id) {
+    public ModelAndView editAdminShow(Map<String, Object> requestMap, @PathVariable Integer id) {
         Admin admin = adminService.getAdminById(id);
         requestMap.put("admin", admin);
-        return "admin/list";
+        return new ModelAndView("admin/list","requestMap",requestMap);
     }
 
     /**
@@ -285,10 +285,10 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "admin-admin-editadminmessage-show/{id}", method = RequestMethod.GET)
-    public String showAdminMessageEdit(Map<String, Object> requestMap, @PathVariable("id") Integer id) {
+    public ModelAndView showAdminMessageEdit(Map<String, Object> requestMap, @PathVariable("id") Integer id) {
         AdminMessage adminMessage = adminService.getAdminMessageById(id);
         requestMap.put("adminMessage", adminMessage);
-        return "/admin/message-edit";
+        return new ModelAndView("/admin/message-edit","requestMap",requestMap);
     }
 
     /**

@@ -14,7 +14,7 @@
                 <li class="am-text-sm tpl-header-navbar-welcome">
                     <a href="javascript:;">欢迎你，
                         <span>
-                        ${sessionScope.admin.adminName}
+                        ${session.admin.adminName}
                         admin
                         </span></a>
                 </li>

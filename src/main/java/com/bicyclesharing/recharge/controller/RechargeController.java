@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by Tomecs on 2017/10/23.
  */
 @Controller
-@RequestMapping("rechange")
+@RequestMapping("recharge")
 public class RechargeController {
 
     @Autowired
