@@ -122,7 +122,7 @@ public class BicycleController {
     @RequestMapping(value = "admin-bicycle-editbicycle-execute", method = RequestMethod.POST)
     public String editBicycleExecute(@RequestParam("id") Integer id, @RequestParam("bicycleCurrentX") Double bicycleCurrentX, @RequestParam("bicycleCurrentY") Double bicycleCurrentY, @RequestParam("bicycleStatement") Integer bicycleStatement) {
         bicycleService.editBicycyle(id, bicycleCurrentX, bicycleCurrentY,new Date(), bicycleStatement);
-        return "redirect:/admin-bicycle-list-show?page=1";
+        return "redirect:/bicycle/admin-bicycle-list-show?page=1";
     }
 
     @RequestMapping(value = "admin-bicycle-delete-execute/{id}", method = RequestMethod.GET)
