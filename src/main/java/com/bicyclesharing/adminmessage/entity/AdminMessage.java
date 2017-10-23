@@ -13,6 +13,13 @@ public class AdminMessage {
 
     private String adminMessageContent;
 
+    public AdminMessage(String adminMessageTitle, Date adminMessageTime, Integer adminId, String adminMessageContent) {
+        this.adminMessageTitle = adminMessageTitle;
+        this.adminMessageTime = adminMessageTime;
+        this.adminId = adminId;
+        this.adminMessageContent = adminMessageContent;
+    }
+
     public Integer getAdminMessageId() {
         return adminMessageId;
     }
