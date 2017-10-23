@@ -13,6 +13,16 @@ public class Bicycle {
 
     private Integer bicycleStatement;
 
+    public Bicycle() {
+    }
+
+    public Bicycle(Double bicycleCurrentX, Double bicycleCurrentY, Date bicycleLastTime, Integer bicycleStatement) {
+        this.bicycleCurrentX = bicycleCurrentX;
+        this.bicycleCurrentY = bicycleCurrentY;
+        this.bicycleLastTime = bicycleLastTime;
+        this.bicycleStatement = bicycleStatement;
+    }
+
     public Integer getBicycleId() {
         return bicycleId;
     }
