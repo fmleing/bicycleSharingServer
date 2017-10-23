@@ -13,6 +13,21 @@ public class User {
 
     private Integer userCash;
 
+    public User() {
+    }
+
+    public User(String userName) {
+        this.userName = userName;
+    }
+
+    public User(Integer userId, String userName, BigDecimal userAccount, Integer userCredit, Integer userCash) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userAccount = userAccount;
+        this.userCredit = userCredit;
+        this.userCash = userCash;
+    }
+
     public Integer getUserId() {
         return userId;
     }
