@@ -17,7 +17,7 @@
                             </div>
                             <!--按自行车状况搜索-->
                             <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <form action="${pageContext.request.contextPath }/admin-bicycle-searchbicycle-show" method="get">
+                                <form action="/bicycle/admin-bicycle-searchbicycle-show" method="get">
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                         <input type="text" class="am-form-field" name="statement">
                                         <span class="am-input-group-btn">
@@ -40,42 +40,42 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${requestScope.pageBicycles}" var="bicycles">
+                                    #foreach(${bicycle} in ${pageBicycles})
                                         <tr class="gradeX">
-                                            <td class="am-text-middle">${bicycles.bicycleId}</td>
-                                            <td class="am-text-middle">${bicycles.bicycleCurrentX}</td>
-                                            <td class="am-text-middle">${bicycles.bicycleCurrentY}</td>
-                                            <td class="am-text-middle"><fmt:formatDate value="${bicycles.bicycleLastTime}" type="both"/></td>
-                                            <td class="am-text-middle">${bicycles.bicycleStatement}</td>
+                                            <td class="am-text-middle">${bicycle.bicycleId}</td>
+                                            <td class="am-text-middle">${bicycle.bicycleCurrentX}</td>
+                                            <td class="am-text-middle">${bicycle.bicycleCurrentY}</td>
+                                            <td class="am-text-middle"><fmt:formatDate value="${bicycle.bicycleLastTime}" type="both"/></td>
+                                            <td class="am-text-middle">${bicycle.bicycleStatement}</td>
                                             <td class="am-text-middle">
                                                 <div class="tpl-table-black-operation">
-                                                    <a href="${pageContext.request.contextPath }/admin-bicycle-editbicycle-show/${bicycles.bicycleId }">
+                                                    <a href="/bicycle/admin-bicycle-editbicycle-show/${bicycle.bicycleId }">
                                                         <i class="am-icon-pencil"></i> 编辑
                                                     </a>
-                                                    <a href="${pageContext.request.contextPath }/admin-bicycle-delete-execute/${bicycles.bicycleId }" class="tpl-table-black-operation-del">
+                                                    <a href="/bicycle/admin-bicycle-delete-execute/${bicycle.bicycleId}" class="tpl-table-black-operation-del">
                                                         <i class="am-icon-trash"></i> 删除
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                    </c:forEach>
-
-                                    <!-- more data -->
+                                    #end
                                     </tbody>
                                 </table>
                             </div>
-                            <c:if test="${requestScope.pagePoint != null}">
+                            #if(${pagePoint})
                                 <div class="am-u-lg-12 am-cf" style="font-size:14px;">
                                     <div class="am-fr">
                                         <ul class="am-pagination tpl-pagination">
-                                            <li><a href="${pageContext.request.contextPath }/admin-bicycle-list-show?page=${requestScope.pagePoint - 1 }">«</a></li>
-                                            <li><a>当前第${requestScope.pagePoint }页(共${requestScope.pageMax }页)</a></li>
+                                            #set($per = ${pagePoint} - 1)
+                                            <li><a href="/bicycle/admin-bicycle-list-show?page=${pre}">«</a></li>
+                                            <li><a>当前第${pagePoint}页(共${pageMax }页)</a></li>
                                             <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a></li>
-                                            <li><a href="${pageContext.request.contextPath }/admin-bicycle-list-show?page=${requestScope.pagePoint + 1 }">»</a></li>
+                                            #set($left = ${pagePoint} + 1)
+                                            <li><a href="/bicycle/admin-bicycle-list-show?page=${left}">»</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                            </c:if>
+                            #end
                         </div>
 
 <script src="/static/js/amazeui.min.js"></script>
