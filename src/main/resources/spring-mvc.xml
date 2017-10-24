@@ -35,10 +35,30 @@
     <mvc:annotation-driven/>
     <!--处理静态资源-->
     <mvc:default-servlet-handler/>
-    <!--&lt;!&ndash;配置会话拦截器&ndash;&gt;-->
+    <!--配置会话拦截器-->
     <!--<mvc:interceptors>-->
         <!--<bean class="com.bicyclesharing.common.SessionInterceptor"/>-->
     <!--</mvc:interceptors>-->
+
+    <!-- 配置管理员登录验证拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/index/admin-index-*"/>
+            <mvc:exclude-mapping path="/index/admin-index-login-show"/>
+            <mvc:exclude-mapping path="/index/admin-index-login-execute"/>
+            <bean class="com.bicyclesharing.common.AdminLoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 配置管理员高级操作认证拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/admin-admin-*"/>
+            <mvc:exclude-mapping path="/admin/admin-admin-password-show"/>
+            <mvc:exclude-mapping path="/admin/admin-admin-password-execute"/>
+            <bean class="com.bicyclesharing.common.AdvancedOperationsInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!--velocity配置-->
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/views"/>
@@ -57,6 +77,7 @@
         <property name="exposeSpringMacroHelpers" value="true" />
         <property name="exposeSessionAttributes" value="true" />
         <property name="exposeRequestAttributes" value="true" />
+        <property name="allowSessionOverride" value="true"/>
         <property name="requestContextAttribute" value="rc" />
         <property name="contentType" value="text/html;charset=utf-8"/>
         <!--日期配置-->
