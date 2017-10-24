@@ -1,22 +1,18 @@
-//引入地图,坐标中心自己定
 var map = new AMap.Map('container', {
     resizeEnable: true,
     zoom: 20,
     center: [118.642371, 32.036997]
 });
 
-// 请求地址(记得改为局域网地址,localhost只在本机可以看见点)
 var url='http://localhost:8080/';
 var greenX = url+'api-bicycle-getX/1';
 var greenY = url+'api-bicycle-getY/1';
 var redX = url+'api-bicycle-getX/-1';
 var redY = url+'api-bicycle-getY/-1';
 
-// 保存数据的变量
 var greenBicycleCurrentX,greenBicycleCurrentY;
 var redBicycleCurrentX,redBicycleCurrentY;
 
-// 请求绿色单车的数据，先获取X再获取Y，然后初始化
 Ajax(greenX, function(res) {
     greenBicycleCurrentX = JSON.parse(res);
     Ajax(greenY, function(res) {
@@ -25,7 +21,6 @@ Ajax(greenX, function(res) {
     })
 })
 
-// 请求红色单车的数据，先获取X再获取Y，然后初始化
 Ajax(redX, function(res) {
     redBicycleCurrentX = JSON.parse(res);
     Ajax(redY, function(res) {

@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WOFI单车后台管理</title>
+</head>
 <body>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>单车后台管理</title>
+    <jsp:forward page="/admin/admin-index-index-show"></jsp:forward>
 </body>
-文件启动
-<%--<jsp:forward page=""/>--%>
 </html>
