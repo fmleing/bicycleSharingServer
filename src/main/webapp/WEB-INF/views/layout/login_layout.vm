@@ -7,7 +7,7 @@
 </head>
 
 <body data-type="login">
-<script src="${pageContext.request.contextPath }/assets/js/theme.js"></script>
+<script src="/static/js/theme.js"></script>
 <div class="am-g tpl-g">
     <div class="tpl-login">
         <div class="tpl-login-content">

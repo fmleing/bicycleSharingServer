@@ -14,8 +14,7 @@
                 <li class="am-text-sm tpl-header-navbar-welcome">
                     <a href="javascript:;">欢迎你，
                         <span>
-                        ${session.admin.adminName}
-                        admin
+                        ${admin.adminName}
                         </span></a>
                 </li>
                 <li>

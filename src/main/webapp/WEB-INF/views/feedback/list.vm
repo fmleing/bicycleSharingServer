@@ -19,12 +19,12 @@
             </tr>
             </thead>
             <tbody>
-            #foreach($userFeadback in $userFeedbacks)
+            #foreach(${userFeedback} in ${pageUserFeedbacks})
                 <td class="am-text-middle">${userFeedback.feedbackTitle}</td>
                 <td class="am-text-middle">${userFeedback.feedbackContent}</td>
                 <td class="am-text-middle">${userFeedback.bicycleId}</td>
                 <td class="am-text-middle">
-                    <fmt:formatDate value="${userFeedback.feedbackTime}" type="both"/>
+                    $!date.format('yyyy-MM-dd HH:mm:ss ',$!{userFeedback.feedbackTime})
                 </td>
                 <td class="am-text-middle">${userFeedback.feedbackStatement}</td>
                 <td class="am-text-middle">
@@ -32,14 +32,14 @@
                         <a href="/userfeadback/admin-userFeedback-resolved-execute/${userFeedback.feedbackId}">
                             <i class="am-icon-book"></i> 已读
                         </a>
-                        <a href="admin-userFeedback-removeuser-execute/${userFeedback.feedbackId}"
+                        <a href="/userfeadback/admin-userFeedback-removeuser-execute/${userFeedback.feedbackId}"
                            class="tpl-table-black-operation-del">
                             <i class="am-icon-trash"></i> 删除
                         </a>
                     </div>
                 </td>
                 </tr>
-            #end
+                #end
             </tbody>
         </table>
     </div>

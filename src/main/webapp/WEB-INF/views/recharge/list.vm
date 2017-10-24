@@ -28,7 +28,7 @@
                     <td class="am-text-middle">${recharges.rechargeAmount}</td>
                     <td class="am-text-middle">${recharges.remaining}</td>
                     <td class="am-text-middle">
-                        <fmt:formatDate value="${recharges.rechargeTime}" type="both"/>
+                        $!date.format('yyyy-MM-dd HH:mm:ss ',$!{recharges.rechargeTime})
                     </td>
                 </tr>
             #end

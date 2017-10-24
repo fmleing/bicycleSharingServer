@@ -6,7 +6,7 @@
         <div class="am-form-group">
             <div class="am-btn-toolbar">
                 <div class="am-btn-group am-btn-group-xs">
-                    <a href="/admin/add_message" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</a>
+                    <a href="/admin/admin-admin-searchmessage-show" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</a>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-        <form action="/admin/search_message" method="get">
+        <form action="/admin/admin-admin-searchmessage-show method="get">
             <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                 <input type="text" class="am-form-field" name="title">
                 <span class="am-input-group-btn">
@@ -44,19 +44,17 @@
                 </td>
                 <td class="am-text-middle">
                     <div class="tpl-table-black-operation">
-                        <a href="/admin/edit_message/${adminMessage.adminMessageId}">
+                        <a href="/admin/admin-admin-editadminmessage-show/${adminMessage.adminMessageId}">
                             <i class="am-icon-pencil"></i> 编辑
                         </a>
-                        <a href="/admin/remove_message/${adminMessage.adminMessageId}" class="tpl-table-black-operation-del">
+                        <a href="/admin/admin-admin-removeadminmessage-show/${adminMessage.adminMessageId}" class="tpl-table-black-operation-del">
                             <i class="am-icon-trash"></i> 删除
                         </a>
                     </div>
                 </td>
                 </tr>
-##                                    </c:forEach>
             #end
             <tr class="gradeX">
-                <!-- more data -->
             </tbody>
         </table>
     </div>
@@ -69,7 +67,7 @@
                     <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
                     <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a></li>
                     #set($left = ${pagePoint} + 1)
-                    <li><a href="/admin/message?page=${left}">»</a></li>
+                    <li><a href="/admin/admin-admin-message-show?page=${left}">»</a></li>
                 </ul>
             </div>
         </div>
@@ -85,7 +83,7 @@
         if (point == "") {
             return false;
         }
-        var url = "/admin/message?page=" + point;
+        var url = "/admin/admin-admin-message-show?page=" + point;
         window.location = url;
         return false;
     })

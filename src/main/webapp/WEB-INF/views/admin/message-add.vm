@@ -2,7 +2,7 @@
 #set($body_name="添加管理员通知")
 
 <div class="widget-body am-fr">
-    <form class="am-form tpl-form-line-form" action="admin-admin-addadminmessage-execute" method="post">
+    <form class="am-form tpl-form-line-form" action="/admin/admin-admin-addadminmessage-execute" method="post">
         <input type="hidden" name="adminId" value="${admin.adminId}"/>
         <div class="am-form-group">
             <label for="user-name" class="am-u-sm-3 am-form-label">标题 <span class="tpl-form-line-small-title">Title</span></label>

@@ -2,7 +2,7 @@
 #set($body_name="添加单车")
 
 <div class="widget-body am-fr">
-    <form autocomplete="off" class="am-form tpl-form-line-form" action="admin-bicycle-addbicycle-execute" method="post">
+    <form autocomplete="off" class="am-form tpl-form-line-form" action="/bicycle/admin-bicycle-addbicycle-execute" method="post">
 
         <div class="am-form-group">
             <label for="bicycle-x" class="am-u-sm-3 am-form-label">位置经度</label>

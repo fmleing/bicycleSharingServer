@@ -1,82 +1,81 @@
 #set($page_title="单车列表")
 #set($body_name="单车列表")
 
-                        <div class="widget-body  am-fr">
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
-                                <div class="am-form-group">
-                                    <div class="am-btn-toolbar">
-                                        <div class="am-btn-group am-btn-group-xs">
-                                            <a href="admin-bicycle-addbicycle-show" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-                                <div class="am-form-group tpl-table-list-select">
-                                </div>
-                            </div>
-                            <!--按自行车状况搜索-->
-                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-                                <form action="/bicycle/admin-bicycle-searchbicycle-show" method="get">
-                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-                                        <input type="text" class="am-form-field" name="statement">
-                                        <span class="am-input-group-btn">
-            								<button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit"></button>
-         								</span>
-                                    </div>
-                                </form>
-                            </div>
+<div class="widget-body  am-fr">
+    <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+        <div class="am-form-group">
+            <div class="am-btn-toolbar">
+                <div class="am-btn-group am-btn-group-xs">
+                    <a href="admin-bicycle-addbicycle-show" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+        <div class="am-form-group tpl-table-list-select">
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+        <form action="/bicycle/admin-bicycle-searchbicycle-show" method="get">
+            <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                <input type="text" class="am-form-field" name="statement">
+                <span class="am-input-group-btn">
+                    <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="submit"></button>
+                </span>
+            </div>
+        </form>
+    </div>
 
-                            <div class="am-u-sm-12">
-                                <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
-                                    <thead>
-                                    <tr>
-                                        <th>单车编号</th>
-                                        <th>位置经度</th>
-                                        <th>位置纬度</th>
-                                        <th>最终归还时间</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    #foreach(${bicycle} in ${pageBicycles})
-                                        <tr class="gradeX">
-                                            <td class="am-text-middle">${bicycle.bicycleId}</td>
-                                            <td class="am-text-middle">${bicycle.bicycleCurrentX}</td>
-                                            <td class="am-text-middle">${bicycle.bicycleCurrentY}</td>
-                                            <td class="am-text-middle"><fmt:formatDate value="${bicycle.bicycleLastTime}" type="both"/></td>
-                                            <td class="am-text-middle">${bicycle.bicycleStatement}</td>
-                                            <td class="am-text-middle">
-                                                <div class="tpl-table-black-operation">
-                                                    <a href="/bicycle/admin-bicycle-editbicycle-show/${bicycle.bicycleId}">
-                                                        <i class="am-icon-pencil"></i> 编辑
-                                                    </a>
-                                                    <a href="/bicycle/admin-bicycle-delete-execute/${bicycle.bicycleId}" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    #end
-                                    </tbody>
-                                </table>
-                            </div>
-                            #if(${pagePoint})
-                                <div class="am-u-lg-12 am-cf" style="font-size:14px;">
-                                    <div class="am-fr">
-                                        <ul class="am-pagination tpl-pagination">
-                                            #set($per = ${pagePoint} - 1)
-                                            <li><a href="/bicycle/admin-bicycle-list-show?page=${per}">«</a></li>
-                                            <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
-                                            <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a></li>
-                                            #set($left = ${pagePoint} + 1)
-                                            <li><a href="/bicycle/admin-bicycle-list-show?page=${left}">»</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            #end
+    <div class="am-u-sm-12">
+        <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
+            <thead>
+            <tr>
+                <th>单车编号</th>
+                <th>位置经度</th>
+                <th>位置纬度</th>
+                <th>最终归还时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            #foreach(${bicycle} in ${pageBicycles})
+                <tr class="gradeX">
+                    <td class="am-text-middle">${bicycle.bicycleId}</td>
+                    <td class="am-text-middle">${bicycle.bicycleCurrentX}</td>
+                    <td class="am-text-middle">${bicycle.bicycleCurrentY}</td>
+                    <td class="am-text-middle">$!date.format('yyyy-MM-dd HH:mm:ss ',$!{bicycle.bicycleLastTime})</td>
+                    <td class="am-text-middle">${bicycle.bicycleStatement}</td>
+                    <td class="am-text-middle">
+                        <div class="tpl-table-black-operation">
+                            <a href="/bicycle/admin-bicycle-editbicycle-show/${bicycle.bicycleId}">
+                                <i class="am-icon-pencil"></i> 编辑
+                            </a>
+                            <a href="/bicycle/admin-bicycle-delete-execute/${bicycle.bicycleId}" class="tpl-table-black-operation-del">
+                                <i class="am-icon-trash"></i> 删除
+                            </a>
                         </div>
+                    </td>
+                </tr>
+            #end
+            </tbody>
+        </table>
+    </div>
+    #if(${pagePoint})
+        <div class="am-u-lg-12 am-cf" style="font-size:14px;">
+            <div class="am-fr">
+                <ul class="am-pagination tpl-pagination">
+                    #set($per = ${pagePoint} - 1)
+                    <li><a href="/bicycle/admin-bicycle-list-show?page=${per}">«</a></li>
+                    <li><a>当前第${pagePoint}页(共${pageMax}页)</a></li>
+                    <li><a href="#!" id="skipBtn"> 跳转到&nbsp;<input type="text" name="pagePoint" style="width:20px;height: 14px; color:black; font-size: 10px;">&nbsp;页</a></li>
+                    #set($left = ${pagePoint} + 1)
+                    <li><a href="/bicycle/admin-bicycle-list-show?page=${left}">»</a></li>
+                </ul>
+            </div>
+        </div>
+    #end
+</div>
 
 <script src="/static/js/amazeui.min.js"></script>
 <script src="/static/js/app.js"></script>
@@ -88,7 +87,7 @@
             if(page == ""){
                 page = 1;
             }
-            window.location = "${pageContext.request.contextPath}/admin-bicycle-list-show?page=" + page;
+            window.location = "/bicycle/admin-bicycle-list-show?page=" + page;
         });
         $("#skipBtn > input").on("click", function() {
             return false;

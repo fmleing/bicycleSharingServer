@@ -38,10 +38,10 @@
                     <td class="am-text-middle">${admin.adminEmail}</td>
                     <td class="am-text-middle">
                         <div class="tpl-table-black-operation">
-                            <a href="/admin/edit/${admin.adminId}">
+                            <a href="/admin/admin-admin-editadmin-show/${admin.adminId}">
                                 <i class="am-icon-pencil"></i> 编辑
                             </a>
-                            <a href="/admin/remove/${admin.adminId}"
+                            <a href="/admin/admin-admin-removeadmin-execute/${admin.adminId}"
                                class="tpl-table-black-operation-del">
                                 <i class="am-icon-trash"></i> 删除
                             </a>

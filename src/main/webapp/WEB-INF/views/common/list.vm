@@ -9,9 +9,9 @@
             </div>
             <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
-                ${sessionScope.admin.adminName}
+                ${admin.adminName}
           </span>
-            <a href="${rc.contextPath}/admin-index-edit-show" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+            <a href="/index/admin-index-edit-show" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
         </div>
     </div>
 ##    菜单

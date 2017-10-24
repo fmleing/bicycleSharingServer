@@ -9,14 +9,6 @@
         <div class="am-form-group tpl-table-list-select">
         </div>
     </div>
-    <%--    <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-        <input type="text" class="am-form-field ">
-        <span class="am-input-group-btn">
-                    <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
-                </span>
-    </div>
-</div>--%>
     <div class="am-u-sm-12">
         <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black ">
             <thead>
@@ -42,10 +34,10 @@
                     <td class="am-text-middle">${borrow.bicycleId}</td>
                     <td class="am-text-middle">${borrow.userId}</td>
                     <td class="am-text-middle">
-                        <fmt:formatDate value="${borrow.borrowStartTime}" type="both"/>
+                        $!date.format('yyyy-MM-dd HH:mm:ss ',$!{borrow.borrowStartTime})
                     </td>
                     <td class="am-text-middle">
-                        <fmt:formatDate value="${borrow.borrowEndTime}" type="both"/>
+                        $!date.format('yyyy-MM-dd HH:mm:ss ',$!{borrow.borrowEndTime})
                     </td>
                     <td class="am-text-middle">${borrow.borrowStartX}</td>
                     <td class="am-text-middle">${borrow.borrowStartY}</td>
@@ -81,8 +73,8 @@
     #end
 </div>
 
-<script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+<script src="/static/js/app.js"></script>
 <script type="text/javascript">
 
     $(function(){
