@@ -100,6 +100,6 @@ public class UserController {
     @RequestMapping(value="admin-user-resetcredit-execute/{id}", method= RequestMethod.GET)
     public String resetCredit(@PathVariable("id") Integer id) {
         userService.resetCredit(id);
-        return "redirect:/admin-user-list-show?page=1";
+        return "redirect:/user/admin-user-list-show?page=1";
     }
 }

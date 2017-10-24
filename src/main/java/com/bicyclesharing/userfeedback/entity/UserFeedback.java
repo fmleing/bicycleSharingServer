@@ -25,6 +25,15 @@ public class UserFeedback {
         this.feedbackId = feedbackId;
     }
 
+    public UserFeedback(String feedbackTitle, String feedbackContent, Integer userId, Integer bicycleId, Date feedbackTime, Integer feedbackStatement) {
+        this.feedbackTitle = feedbackTitle;
+        this.feedbackContent = feedbackContent;
+        this.userId = userId;
+        this.bicycleId = bicycleId;
+        this.feedbackTime = feedbackTime;
+        this.feedbackStatement = feedbackStatement;
+    }
+
     public String getFeedbackTitle() {
         return feedbackTitle;
     }

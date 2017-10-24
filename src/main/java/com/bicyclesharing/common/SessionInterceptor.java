@@ -1,5 +1,6 @@
 package com.bicyclesharing.common;
 
+import com.bicyclesharing.admin.entity.Admin;
 import com.bicyclesharing.user.entity.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,14 +24,14 @@ public class SessionInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         String uri = httpServletRequest.getRequestURI();
-        if ((uri.indexOf("index_login") >= 0) || (uri.indexOf("error") >= 0)) {
+        if ((uri.indexOf("login") >= 0) || (uri.indexOf("error") >= 0)) {
             return true;
         }
-        User user = (User) httpServletRequest.getSession().getAttribute("userinfo");
-        if (user != null) {
+        Admin admin = (Admin) httpServletRequest.getSession().getAttribute("admin");
+        if (admin != null) {
             return true;
         }
-        httpServletRequest.getRequestDispatcher("/index_login").forward(httpServletRequest, httpServletResponse);
+        httpServletRequest.getRequestDispatcher("/index/admin-index-login-show").forward(httpServletRequest, httpServletResponse);
         return false;
     }
 

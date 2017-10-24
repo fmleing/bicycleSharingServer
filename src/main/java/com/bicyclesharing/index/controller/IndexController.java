@@ -98,7 +98,7 @@ public class IndexController {
     public String loginExecute(Map<String, Object> requestMap, HttpSession session,
                                @RequestParam("name") String name, @RequestParam("password") String password) {
         int loginSuccess = adminService.login(name, password);
-        String view = "redirect:/admin-index-index-show";
+        String view = "redirect:/index/admin-index-index-show";
         if (loginSuccess == 1) { //登录成功
             Admin admin = adminService.getAdminByName(name);
             requestMap.put("admin", admin);
@@ -132,9 +132,9 @@ public class IndexController {
         boolean editSuccess = adminService.editAdmin(id, name, password, email);
         Admin admin = adminService.getAdminById(id);
         session.setAttribute("admin", admin);
-        String view = "redirect:/admin-index-index-show";
+        String view = "redirect:/index/admin-index-index-show";
         if (!editSuccess) {
-            view = "redirect:/admin-index-edit-show";
+            view = "redirect:/index/admin-index-edit-show";
         }
         return view;
     }
@@ -148,7 +148,7 @@ public class IndexController {
     public String exitExecute(HttpSession session) {
         session.removeAttribute("admin");
         session.removeAttribute("advanced");
-        return "redirect:/admin-index-login-show";
+        return "redirect:/index/admin-index-login-show";
     }
 
     /**

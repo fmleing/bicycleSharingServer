@@ -76,7 +76,7 @@ public class UserFeedBackController {
     @RequestMapping(value = "admin-userFeedback-resolved-execute/{id}", method = RequestMethod.GET)
     public String resolved(@PathVariable("id") Integer id) {
         userFeedbackService.resolved(id);
-        return "redirect:/admin-feedback-list-show?page=1";
+        return "redirect:/userfeadback/admin-feedback-list-show?page=1";
     }
     /**
      * 3.根据id删除用户反馈
@@ -87,6 +87,6 @@ public class UserFeedBackController {
         if (userFeedback.getFeedbackStatement()==1){
             userFeedbackService.removeFeedback(feedbackId);
         }
-        return "redirect:/admin-feedback-list-show?page=1";
+        return "redirect:/userfeadback/admin-feedback-list-show?page=1";
     }
 }

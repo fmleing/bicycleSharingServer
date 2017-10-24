@@ -103,7 +103,7 @@ public class BicycleController {
     @RequestMapping(value = "admin-bicycle-addbicycle-execute", method = RequestMethod.POST)
     public String addBicycleExcute(@RequestParam("bicycleCurrentX") Double bicycleCurrentX, @RequestParam("bicycleCurrentY") Double bicycleCurrentY, @RequestParam("bicycleStatement") Integer bicycleStatement, @RequestParam("n") Integer n) {
         bicycleService.addBicycle1(bicycleCurrentX, bicycleCurrentY, new Date(), bicycleStatement, n);
-        String view = "redirect:/admin-bicycle-list-show?page=1";
+        String view = "redirect:/bicycle/admin-bicycle-list-show?page=1";
         return view;
     }
 
@@ -128,7 +128,7 @@ public class BicycleController {
     @RequestMapping(value = "admin-bicycle-delete-execute/{id}", method = RequestMethod.GET)
     public String deleteOneBicycle(@PathVariable("id") Integer id) {
         bicycleService.removeBicycle(id);
-        return "redirect:/admin-bicycle-list-show?page=1";
+        return "redirect:/bicycle/admin-bicycle-list-show?page=1";
     }
 
 }

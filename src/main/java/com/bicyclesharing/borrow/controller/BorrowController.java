@@ -70,6 +70,6 @@ public class BorrowController {
     @RequestMapping(value = "admin-borrow-delete-execute/{id}", method = RequestMethod.GET)
     public String deleteOneBicycle(@PathVariable("id") Integer id) {
         borrowService.removeBorrow(id);
-        return "redirect:/admin-borrow-list-show?page=1";
+        return "redirect:/borrow/admin-borrow-list-show?page=1";
     }
 }

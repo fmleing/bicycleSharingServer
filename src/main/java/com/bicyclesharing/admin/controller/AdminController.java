@@ -167,7 +167,7 @@ public class AdminController {
                                    @RequestParam("email") String email) {
         System.out.println(name);
         boolean registerSuccess = adminService.addAdmin( name, password, password2, email);
-        String view = "redirect:/admin-admin-list-show?page=1";
+        String view = "redirect:/admin/admin-admin-list-show?page=1";
         if (!registerSuccess) {
             view = "/admin/register";
         }
@@ -198,7 +198,7 @@ public class AdminController {
         if ("huija".equals(password)) {
             session.setAttribute("advanced", 1);
         }
-        return "redirect:/admin-admin-list-show?page=1";
+        return "redirect:/admin/admin-admin-list-show?page=1";
     }
 
     /**
@@ -210,7 +210,7 @@ public class AdminController {
     @RequestMapping(value = "admin-admin-removeadmin-execute/{id}", method = RequestMethod.GET)
     public String removeAdminExecute(@PathVariable Integer id) {
         adminService.removeAdmin(id);
-        return "redirect:/admin-admin-list-show?page=1";
+        return "redirect:/admin/admin-admin-list-show?page=1";
     }
 
     /**
@@ -224,7 +224,7 @@ public class AdminController {
     public ModelAndView editAdminShow(Map<String, Object> requestMap, @PathVariable Integer id) {
         Admin admin = adminService.getAdminById(id);
         requestMap.put("admin", admin);
-        return new ModelAndView("admin/list","requestMap",requestMap);
+        return new ModelAndView("/admin/edit","requestMap",requestMap);
     }
 
     /**
@@ -241,9 +241,9 @@ public class AdminController {
                                    @RequestParam("name") String name, @RequestParam("password") String password,
                                    @RequestParam("email") String email) {
         boolean editSuccess = adminService.editAdmin(id, name, password, email);
-        String view = "redirect:/admin-admin-list-show?page=1";
+        String view = "redirect:/admin/admin-admin-list-show?page=1";
         if (!editSuccess) {
-            view = "redirect:/admin-admin-editadmin-show/" + id;
+            view = "redirect:/admin/admin-admin-editadmin-show/" + id;
         }
         return view;
     }
