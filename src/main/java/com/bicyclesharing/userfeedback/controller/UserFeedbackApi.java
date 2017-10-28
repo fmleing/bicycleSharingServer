@@ -1,4 +1,4 @@
-package com.bicyclesharing.api;
+package com.bicyclesharing.userfeedback.controller;
 
 import com.bicyclesharing.bicycle.entity.Bicycle;
 import com.bicyclesharing.bicycle.service.BicycleService;

@@ -1,4 +1,4 @@
-package com.bicyclesharing.api;
+package com.bicyclesharing.borrow.controller;
 
 
 import com.bicyclesharing.bicycle.entity.Bicycle;

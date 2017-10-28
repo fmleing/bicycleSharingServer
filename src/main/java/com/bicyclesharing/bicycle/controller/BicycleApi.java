@@ -1,4 +1,4 @@
-package com.bicyclesharing.api;
+package com.bicyclesharing.bicycle.controller;
 
 import com.bicyclesharing.bicycle.entity.Bicycle;
 import com.bicyclesharing.bicycle.service.BicycleService;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**

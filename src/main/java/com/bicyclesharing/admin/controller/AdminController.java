@@ -223,7 +223,7 @@ public class AdminController {
     @RequestMapping(value = "admin-admin-editadmin-show/{id}", method = RequestMethod.GET)
     public ModelAndView editAdminShow(Map<String, Object> requestMap, @PathVariable Integer id) {
         Admin admin = adminService.getAdminById(id);
-        requestMap.put("admin", admin);
+        requestMap.put("adminEdit", admin);
         return new ModelAndView("/admin/edit","requestMap",requestMap);
     }
 

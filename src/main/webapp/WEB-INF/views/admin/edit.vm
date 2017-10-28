@@ -3,23 +3,23 @@
 
 <div class="widget-body am-fr">
     <form autocomplete="off" class="am-form tpl-form-line-form" action="/admin/admin-admin-editadmin-execute" method="post">
-        <input type="hidden" name="id" value="${admin.adminId}">
+        <input type="hidden" name="id" value="${adminEdit.adminId}">
         <div class="am-form-group">
             <label class="am-u-sm-3 am-form-label">管理员名 </label>
             <div class="am-u-sm-9">
-                <input type="text" class="tpl-form-input" name="name" value="${admin.adminName}">
+                <input type="text" class="tpl-form-input" name="name" value="${adminEdit.adminName}">
             </div>
         </div>
         <div class="am-form-group">
             <label class="am-u-sm-3 am-form-label">密码</label>
             <div class="am-u-sm-9">
-                <input type="password" class="tpl-form-input" name="password" value="${admin.adminPassword}">
+                <input type="password" class="tpl-form-input" name="password" value="${adminEdit.adminPassword}">
             </div>
         </div>
         <div class="am-form-group">
             <label class="am-u-sm-3 am-form-label">邮箱 </label>
             <div class="am-u-sm-9">
-                <input type="email" class="tpl-form-input" name="email" value="${admin.adminEmail}">
+                <input type="email" class="tpl-form-input" name="email" value="${adminEdit.adminEmail}">
             </div>
         </div>
         <div class="am-form-group">
